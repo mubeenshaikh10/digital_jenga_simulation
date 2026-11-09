@@ -21,5 +21,17 @@ void initall(int tower[][blocks]){
 }
 void showtower(int tower[][blocks]){
     printf("====DIGITAL JENGA SIMULATION====\n");
+    for(int i = layers - 1 ; i >=0 ; i-- ){
+        printf("Layer %2d ", i);
+        for (int j = 0 ; j < blocks ; j++){
+            if(tower[i][j] == 1 ){
+                printf("[#] ");
+            }
+            else{
+                printf("[] ");
+            }
+        }
+        printf("\n");
+    }
 }
     
