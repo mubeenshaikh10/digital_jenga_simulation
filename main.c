@@ -13,7 +13,11 @@ int main(){
     
 }
 void initall(int tower[][blocks]){
-   
+    for(int i = 0 ; i < layers ; i++){ 
+        for(int j = 0 ; j < blocks ; j++){
+            tower[i][j] = 1;
+        }
+    }
 }
 void showtower(int tower[][blocks]){
     printf("====DIGITAL JENGA SIMULATION====\n");
