@@ -8,6 +8,7 @@ void showtower(int tower[][blocks]);
 void removeblock(int tower[][blocks] , int layer , int pos);
 void getmove(int tower[][blocks], int *layer, int *pos);
 int checkemptylayer(int tower[][blocks], int layer);
+int checkcenter(int tower[][blocks], int layer);
 
 int main(){
     int tower[layers][blocks];
@@ -86,6 +87,15 @@ void getmove(int tower[][blocks], int *layer, int *pos){
 int checkemptylayer(int tower[][blocks], int layer){
     if (tower[layer][0] == 0 && tower[layer][1] == 0 && tower[layer][2] == 0){
         printf("Layer is EMPTY!\n");
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+int checkcenter(int tower[][blocks], int layer){
+    if(tower[layer][0]==0 && tower[layer][1]==1 && tower[layer][2]==0){
+        printf("Only the center block is left! Tower is unbalanced.");
         return 1;
     }
     else{
