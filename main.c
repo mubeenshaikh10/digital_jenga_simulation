@@ -10,14 +10,23 @@ void getmove(int tower[][blocks], int *layer, int *pos);
 
 int main(){
     int tower[layers][blocks];
-    initall(tower);
-    showtower(tower);
-    int pos , layer; 
-    getmove(tower , &layer , &pos);
-    removeblock(tower, layer, pos);
-    showtower(tower);
+    int layer , pos; 
+    int player = 1; 
+    int gameover = 0;
+    int turns = 0; 
+    int removed = 0;
 
-    
+    initall(tower);
+    while (gameover == 0){
+        showtower(tower);
+        printf("Player %d's turn\n", player);
+        getmove(tower, &layer, &pos);
+        removeblock(tower, layer, pos);
+        removed++;
+        turns++;
+        player = 3 - player;
+    }
+    return 0;
 }
 void initall(int tower[][blocks]){
     for(int i = 0 ; i < layers ; i++){ 
