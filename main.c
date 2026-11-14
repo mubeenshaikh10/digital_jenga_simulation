@@ -9,6 +9,7 @@ void removeblock(int tower[][blocks] , int layer , int pos);
 void getmove(int tower[][blocks], int *layer, int *pos);
 int checkemptylayer(int tower[][blocks], int layer);
 int checkcenter(int tower[][blocks], int layer);
+int checklayer0(int tower[][blocks]);
 
 int main(){
     int tower[layers][blocks];
@@ -109,4 +110,15 @@ int checkcenter(int tower[][blocks], int layer){
     else{
         return 0;
     }
+}
+int checklayer0(int tower[][blocks]){
+    int count = 0 , j; 
+    for (j = 0 ; j < blocks - 1 ; j++){
+        count = count + tower[0][j];
+    }
+    if(count<2){
+        printf("The Base can no Longer hold the Tower!\n");
+        return 1;
+    }
+    r
 }
