@@ -11,6 +11,7 @@ int checkemptylayer(int tower[][blocks], int layer);
 int checkcenter(int tower[][blocks], int layer);
 int checklayer0(int tower[][blocks]);
 int checkchain(int tower[][blocks]);
+int checkstability(int tower[][blocks] , int layer);
 
 int main(){
     int tower[layers][blocks];
@@ -28,7 +29,7 @@ int main(){
         removeblock(tower, layer, pos);
         removed++;
         turns++;
-        if(checkemptylayer(tower , layer) == 1 || checkcenter(tower, layer) == 1 ){
+        if(checkstability(tower , layer) == 0){
             showtower(tower);
             printf("\nTOWER COLLAPSED! Player %d Loses.\n", player);
             printf("Turns Done: %d \nBlocks Removed: %d\n" , turns , removed);
@@ -48,7 +49,7 @@ void initall(int tower[][blocks]){
     }
 }
 void showtower(int tower[][blocks]){
-    printf("====DIGITAL JENGA SIMULATION====\n");
+    printf("\n====DIGITAL JENGA SIMULATION====\n");
     for(int i = layers - 1 ; i >=0 ; i-- ){
         printf("Layer %2d ", i);
         for (int j = 0 ; j < blocks ; j++){
@@ -137,5 +138,12 @@ int checkchain(int tower[][blocks]){
         }
     }
     return 0;
+}
+int checkstability(int tower[][blocks] , int layer){
+    if (checkemptylayer(tower, layer) == 1) return 0;
+    if (checkcenter(tower, layer) == 1)     return 0;
+    if (checklayer0(tower) == 1)              return 0;
+    if (checkchain(tower) == 1)             return 0;
+    return 1;
 }
 
