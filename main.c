@@ -10,6 +10,7 @@ void getmove(int tower[][blocks], int *layer, int *pos);
 int checkemptylayer(int tower[][blocks], int layer);
 int checkcenter(int tower[][blocks], int layer);
 int checklayer0(int tower[][blocks]);
+int checkchain(int tower[][blocks]);
 
 int main(){
     int tower[layers][blocks];
@@ -113,12 +114,28 @@ int checkcenter(int tower[][blocks], int layer){
 }
 int checklayer0(int tower[][blocks]){
     int count = 0 , j; 
-    for (j = 0 ; j < blocks - 1 ; j++){
+    for (j = 0 ; j < blocks ; j++){
         count = count + tower[0][j];
     }
     if(count<2){
         printf("The Base can no Longer hold the Tower!\n");
         return 1;
     }
-    r
+    return 0;
 }
+int checkchain(int tower[][blocks]){
+    for (int j = 0 ; j < blocks ; j++){
+        int gone = 1;
+        for (int i = 0; i<layers-1 ; i++){
+            if( tower[i][j] == 1 ){
+                gone = 0;
+            }
+        }
+        if(gone == 1){
+            printf("A whole column of blocks is gone! Tower has lost its support.\n");
+            return 1;
+        }
+    }
+    return 0;
+}
+
