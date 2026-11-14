@@ -26,7 +26,15 @@ int main(){
         removeblock(tower, layer, pos);
         removed++;
         turns++;
-        player = 3 - player;
+        if(checkemptylayer(tower , layer) == 1 || checkcenter(tower, layer) == 1 ){
+            showtower(tower);
+            printf("\nTOWER COLLAPSED! Player %d Loses.\n", player);
+            printf("Turns Done: %d \nBlocks Removed: %d\n" , turns , removed);
+            gameover=1;
+        }
+        else{
+            player = 3 - player;
+        }
     }
     return 0;
 }
@@ -95,7 +103,7 @@ int checkemptylayer(int tower[][blocks], int layer){
 }
 int checkcenter(int tower[][blocks], int layer){
     if(tower[layer][0]==0 && tower[layer][1]==1 && tower[layer][2]==0){
-        printf("Only the center block is left! Tower is unbalanced.");
+        printf("Only the center block is left! Tower is unbalanced.\n");
         return 1;
     }
     else{
