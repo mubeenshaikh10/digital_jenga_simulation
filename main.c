@@ -166,5 +166,20 @@ void saveScore(int turns, int removed, int loser)
             loser, turns, removed);
     fclose(fp);
 }
+void showScores(void)
+{
+    FILE *fp = fopen("records.txt", "r");
+    char line[256];
+    if (fp == NULL)
+    {
+        printf("No records yet.\n");
+        return;
+    }
+    while (fgets(line, sizeof(line), fp) != NULL)
+    {
+        printf("%s", line);
+    }
+    fclose(fp);
+}
 
 
