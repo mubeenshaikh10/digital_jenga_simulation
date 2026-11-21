@@ -12,6 +12,9 @@ int checkcenter(int tower[][blocks], int layer);
 int checklayer0(int tower[][blocks]);
 int checkchain(int tower[][blocks]);
 int checkstability(int tower[][blocks] , int layer);
+int  calcRisk(int removed);
+void saveScore(int turns, int removed, int loser);
+void showScores(void);
 
 int main(){
     int tower[layers][blocks];
@@ -146,4 +149,11 @@ int checkstability(int tower[][blocks] , int layer){
     if (checkchain(tower) == 1)             return 0;
     return 1;
 }
+int calcRisk(int removed)
+{
+    return 1 + removed;
+}
+
+
+
 
