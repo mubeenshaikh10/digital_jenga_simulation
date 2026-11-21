@@ -194,7 +194,8 @@ int checkchain(int tower[][blocks]){
     return 0;
 }
 int checkstability(int tower[][blocks] , int layer){
-    if (checkemptylayer(tower, layer) == 1) return 0;
+    if (checkemptylayer(tower, layer) == 1)
+    return 0;
     if (checkcenter(tower, layer) == 1)     return 0;
     if (checklayer0(tower) == 1)              return 0;
     if (checkchain(tower) == 1)             return 0;
