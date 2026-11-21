@@ -154,6 +154,17 @@ int calcRisk(int removed)
     return 1 + removed;
 }
 
-
+void saveScore(int turns, int removed, int loser)
+{
+    FILE *fp = fopen("records.txt", "a");
+    if (fp == NULL)
+    {
+        printf("Error: could not open records.txt\n");
+        return;
+    }
+    fprintf(fp, "Loser: Player %d | Turns: %d | Blocks removed: %d\n",
+            loser, turns, removed);
+    fclose(fp);
+}
 
 
