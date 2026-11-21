@@ -63,6 +63,37 @@ void playgame(void){
     int turns = 0; 
     int removed = 0;
     int fell;
+
+    initall(tower);
+    while (gameover == 0){
+        showtower(tower);
+        printf("Player %d's turn\n", player);
+        printf("Collapse risk after your move: %d%%\n", calcRisk(removed + 1));
+        getmove(tower, &layer, &pos);
+        removeblock(tower, layer, pos);
+        removed++;
+        turns++;
+
+        fell = 0;
+        if(checkstability(tower , layer) == 0){
+            fell = 1;
+        }
+        else if(rand() % 100 < calcRisk(removed)){
+            printf("The tower could not take the strain!\n");
+            fell = 1;
+        }
+
+        if(fell == 1){
+            showtower(tower);
+            printf("\nTOWER COLLAPSED! Player %d Loses.\n", player);
+            printf("Turns Done: %d \nBlocks Removed: %d\n" , turns , removed);
+            saveScore(turns, removed, player);
+            gameover = 1;
+        }
+        else{
+            player = 3 - player;
+        }
+    }
 }
 void initall(int tower[][blocks]){
     for(int i = 0 ; i < layers ; i++){ 
