@@ -15,34 +15,25 @@ int checkstability(int tower[][blocks] , int layer);
 int  calcRisk(int removed);
 void saveScore(int turns, int removed, int loser);
 void showScores(void);
+void playgame(void);
 
 int main(){
+    int choice;
+    srand(time(NULL));
+   
+   
+     
+    
+    return 0;
+}
+void playgame(void){
     int tower[layers][blocks];
     int layer , pos; 
     int player = 1; 
     int gameover = 0;
     int turns = 0; 
     int removed = 0;
-
-    initall(tower);
-    while (gameover == 0){
-        showtower(tower);
-        printf("Player %d's turn\n", player);
-        getmove(tower, &layer, &pos);
-        removeblock(tower, layer, pos);
-        removed++;
-        turns++;
-        if(checkstability(tower , layer) == 0){
-            showtower(tower);
-            printf("\nTOWER COLLAPSED! Player %d Loses.\n", player);
-            printf("Turns Done: %d \nBlocks Removed: %d\n" , turns , removed);
-            gameover=1;
-        }
-        else{
-            player = 3 - player;
-        }
-    }
-    return 0;
+    int fell;
 }
 void initall(int tower[][blocks]){
     for(int i = 0 ; i < layers ; i++){ 
