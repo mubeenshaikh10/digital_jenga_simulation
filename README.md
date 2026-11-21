@@ -2,8 +2,8 @@
 
 Programming Fundamentals PROJECT  
 Section: BCS-1B  
-26k-0545 Muhammad Mubeen  
-26k-0574 Muhammad Khizar
+26K-0545 Muhammad Mubeen  
+26-0574 Muhammad Khizar
 
 ## Project Introduction
 
@@ -42,34 +42,23 @@ Expected output: For each completed game, a line such as `Loser: Player 2 | Turn
 - Screenshot: ![Case 4](screenshots/case4.png.jpg)
 
 ## How to Clone and Run
-
 ### Step 1: Clone the Repository
-
 Open a terminal and run:
-
 ```
 git clone https://github.com/mubeenshaikh10/digital_jenga_simulation.git
 cd digital_jenga_simulation
 ```
-
 ### Step 2: Compile the Code
-
 ```
 gcc main.c -o jenga
 ```
-
 ### Step 3: Run the Program
-
 Windows (Command Prompt):
-
 ```
 jenga
 ```
-
 Linux or macOS:
-
 ```
 ./jenga
 ```
-
 The file `records.txt` is created in the folder you run the program from.
