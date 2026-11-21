@@ -20,23 +20,38 @@ void playgame(void);
 int main(){
     int choice;
     srand(time(NULL));
-   
+    while(1){
+    printf("\n===== DIGITAL JENGA =====\n");
+        printf("1. Play\n");
+        printf("2. High Scores\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+
+        if(scanf("%d", &choice) != 1){
+            printf("Numbers only. Try again.\n");
+            int ch;
+            while((ch = getchar()) != '\n' && ch != EOF);
+            if(ch == EOF){
+                break;
+            }
+            continue;
+        }
     
-    if(choice == 1){
+        if(choice == 1){
         playgame();
-    }
-    else if(choice == 2){
+        }
+        else if(choice == 2){
         printf("\n===== HIGH SCORES =====\n");
         showScores();
-    }
-    else if(choice == 3){
+        }
+        else if(choice == 3){
         printf("Goodbye!\n");
         break;
-    }
-    else{
+        }
+        else{
         printf("Choose 1 to 3.\n");
+        }
     }
-     
     
     return 0;
 }
