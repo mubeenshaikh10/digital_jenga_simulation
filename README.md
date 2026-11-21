@@ -39,7 +39,7 @@ This is a 2 player Jenga game, written in C, and running in the terminal. The to
 - Description: Checks that a finished game is written to `records.txt` and that the saved results can be displayed. It also checks that the program does not crash when the file does not exist yet.
 - Inputs: Play one game until the tower collapses, then open the high scores option. Run it once before any game has been played as well.
 - Expected output: A line like `Loser: Player 2 | Turns: 3 | Blocks removed: 3` for each finished game. With no file yet, the program prints "No records yet."
-- Screenshot: ![Case 4](screenshots/case4.png)
+- Screenshot: ![Case 4](screenshots/case4.png.jpg)
 
 ## How to clone and run
 
