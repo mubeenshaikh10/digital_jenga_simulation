@@ -21,7 +21,21 @@ int main(){
     int choice;
     srand(time(NULL));
    
-   
+    
+    if(choice == 1){
+        playgame();
+    }
+    else if(choice == 2){
+        printf("\n===== HIGH SCORES =====\n");
+        showScores();
+    }
+    else if(choice == 3){
+        printf("Goodbye!\n");
+        break;
+    }
+    else{
+        printf("Choose 1 to 3.\n");
+    }
      
     
     return 0;
