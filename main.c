@@ -1,3 +1,4 @@
+// Digital Jenga is a two-player console game. Tower is a 2D array (1 = block, 0 = removed)
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -17,6 +18,7 @@ void saveScore(int turns, int removed, int loser);
 void showScores(void);
 void playgame(void);
 
+// Menu: play, high scores or exit.
 int main(){
     int choice;
     srand(time(NULL));
@@ -55,6 +57,8 @@ int main(){
     
     return 0;
 }
+
+// Runs one game. Player only switches if the tower is still standing.
 void playgame(void){
     int tower[layers][blocks];
     int layer , pos; 
@@ -78,6 +82,10 @@ void playgame(void){
         if(checkstability(tower , layer) == 0){
             fell = 1;
         }
+        
+// No rule was broken, but the tower can still fall by chance.
+// The more blocks removed, the higher the risk.
+
         else if(rand() % 100 < calcRisk(removed)){
             printf("The tower could not take the strain!\n");
             fell = 1;
@@ -120,6 +128,8 @@ void showtower(int tower[][blocks]){
 void removeblock(int tower[][blocks] , int layer , int pos){
     tower[layer][pos] = 0;
 }
+
+// Repeats until the move is valid. Returns layer and position through pointers.
 void getmove(int tower[][blocks], int *layer, int *pos){
     int l, p;
     while(1){
@@ -149,6 +159,8 @@ void getmove(int tower[][blocks], int *layer, int *pos){
         break;
     }
 }
+
+// 1 if the layer just changed has no blocks left.
 int checkemptylayer(int tower[][blocks], int layer){
     if (tower[layer][0] == 0 && tower[layer][1] == 0 && tower[layer][2] == 0){
         printf("Layer is EMPTY!\n");
@@ -158,6 +170,8 @@ int checkemptylayer(int tower[][blocks], int layer){
         return 0;
     }
 }
+
+// 1 if only the middle block of the layer is left.
 int checkcenter(int tower[][blocks], int layer){
     if(tower[layer][0]==0 && tower[layer][1]==1 && tower[layer][2]==0){
         printf("Only the center block is left! Tower is unbalanced.\n");
@@ -193,6 +207,8 @@ int checkchain(int tower[][blocks]){
     }
     return 0;
 }
+
+// Runs all collapse rules. Returns 0 if the tower fell.
 int checkstability(int tower[][blocks] , int layer){
     if (checkemptylayer(tower, layer) == 1)
     return 0;
@@ -201,11 +217,15 @@ int checkstability(int tower[][blocks] , int layer){
     if (checkchain(tower) == 1)             return 0;
     return 1;
 }
+
+// Collapse chance in percent, grows with each removed block.
 int calcRisk(int removed)
 {
     return 1 + removed;
 }
 
+
+// Appends the result to records.txt.
 void saveScore(int turns, int removed, int loser)
 {
     FILE *fp = fopen("records.txt", "a");
